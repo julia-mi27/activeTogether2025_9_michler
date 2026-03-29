@@ -1,0 +1,40 @@
+UX-Review (ActiveTogether - aktueller Stand)
+Julia Michler 
+2.AT HID - März 2026
+
+Diese UX-Review umfasst 7 Feedback-Punkte. Davon sind 5 Punkte bereits in der Anwendung umgesetzt.
+Die 2 noch offenen Punkte sind als sinnvolle Verbesserungen dokumentiert.
+
+Umgesetzte UX-Feedback-Punkte (5 von 7)
+
+1) Klare Beschriftung der Formularfelder (umgesetzt)
+- Beobachtung: Die Eingabefelder sind eindeutig benannt (Name, Geburtsdatum, Newsletter, Kurs).
+- UX-Wirkung: Nutzerinnen und Nutzer verstehen ohne Zusatzhilfe, welche Daten erwartet werden.
+
+2) Direkte, feldnahe Fehlerkommunikation bei Form-Validierung (umgesetzt)
+- Beobachtung: Ungültige Felder werden visuell als Fehler markiert (rote Material-Umrandung) und zeigen eine konkrete Fehlermeldung.
+- UX-Wirkung: Fehler sind sofort lokalisierbar; Korrekturen gehen schneller.
+
+3) Vermeidung ungültiger Aktionen durch deaktivierten Submit-Button (umgesetzt)
+- Beobachtung: "Anmeldung erfassen" ist nur bei gültigem Formular aktiv.
+- UX-Wirkung: Verhindert unklare Fehlersituationen nach dem Absenden und reduziert Frust.
+
+4) Sichtbares Feedback nach erfolgreichem Speichern (umgesetzt)
+- Beobachtung: Nach erfolgreicher Anmeldung erscheint eine Snackbar; das Formular wird zur weiteren Erfassung zurückgesetzt.
+- UX-Wirkung: Aktionsergebnis ist klar erkennbar; Folgeeingaben werden erleichtert.
+
+5) Leere und gefilterte Zustande sind explizit erklärt (umgesetzt)
+- Beobachtung: Bei leeren Datenbeständen oder erfolgloser Suche erscheinen klare Hinweismeldungen statt eines "leeren" Bereichs.
+- UX-Wirkung: Nutzerinnen und Nutzer verstehen den Zustand der Ansicht ohne zu raten.
+
+Weitere UX-Feedback-Punkte (derzeit noch offen)
+
+6) Für „Abmelden“ wäre ein Bestätigungsdialog oder Undo sinnvoll.
+7) Sichtbarer Fokus bei Tab-Navigation wäre für Accessibility noch besser.
+
+Pflichtfeatures aus der Aufgabenstellung (separat von UX-Feedback)
+- Row-Loading-Overlay beim Abmelden/Löschen: Umgesetzt.
+  Beim Löschvorgang wird die betroffene Zeile mit Overlay und Spinner blockiert; der Button ist währenddessen nicht klickbar.
+- Suche im Grid "Anmeldungen": Umgesetzt.
+  Vorhanden sind Suchfeld über dem Grid, Live-Filterung während der Eingabe, case-insensitive Suche, Suche über alle angezeigten Daten-Spalten, Trefferzähler und No-Result-Meldung.
+

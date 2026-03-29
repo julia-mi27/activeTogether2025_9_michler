@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
-  public title: string = 'Stay Active, Stay Together';
-  public imagePath: string = 'assets/images/sport.jpg';
+  public title: string = 'ActiveTogether';
+  public tagline: string = 'Kurse · Anmeldungen · Überblick';
+  public imagePath: string = 'assets/images/active-together-mark.svg';
 }

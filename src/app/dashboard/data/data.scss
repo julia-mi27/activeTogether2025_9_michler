@@ -1,0 +1,88 @@
+:host {
+  display: block;
+}
+
+:host > div:nth-child(1) {
+  background: #ffffff;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid #e5e7eb;
+}
+
+:host > div:nth-child(2) {
+  background: #ffffff;
+  border-radius: 10px;
+  margin-top: 0.65rem;
+  border: 1px solid #e5e7eb;
+}
+
+:host h1,
+:host h2.h3 {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.grid-row-desktop {
+  @media (min-width: 992px) {
+    min-height: 96px;
+  }
+}
+
+@media (min-width: 992px) {
+  :host .registration-row.row {
+    border-radius: 8px;
+    margin: 2px 0;
+    transition:
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  :host .registration-row.row:hover {
+    background: #f8fafc;
+  }
+}
+
+.registration-row {
+  @media (max-width: 991.98px) {
+    min-height: 0;
+  }
+}
+
+.row-delete-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  pointer-events: auto;
+  border-radius: inherit;
+}
+
+.search-field {
+  width: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+:host .card {
+  position: relative;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+:host .card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+:host .alert-info {
+  border-left: 4px solid #0d9488;
+  background: #f0fdfa;
+  color: #1f2937;
+  border-radius: 8px;
+}

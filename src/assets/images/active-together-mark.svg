@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t d">
+  <title id="t">ActiveTogether Logo</title>
+  <desc id="d">Drei Kreise symbolisieren Gemeinschaft; Linie unten steht fuer Bewegung und Kurse.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5b21b6" />
+      <stop offset="50%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#be185d" />
+    </linearGradient>
+    <filter id="s" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1e1b4b" flood-opacity="0.25" />
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="52" fill="url(#bg)" />
+  <!-- drei ueberlappende Kreise = zusammen, ohne Strichmaennchen -->
+  <g filter="url(#s)" fill="#ffffff">
+    <circle cx="86" cy="128" r="44" opacity="0.88" />
+    <circle cx="128" cy="112" r="50" opacity="0.95" />
+    <circle cx="170" cy="128" r="44" opacity="0.88" />
+  </g>
+  <!-- Bewegungs-Linie (wie Aktivitaetskurve, sehr reduziert) -->
+  <path
+    d="M 48 188 Q 96 156 128 172 T 208 184"
+    fill="none"
+    stroke="#fef08a"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.95"
+  />
+</svg>

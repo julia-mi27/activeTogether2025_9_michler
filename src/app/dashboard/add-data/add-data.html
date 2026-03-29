@@ -1,13 +1,80 @@
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-  <h2>Zum Kurs anmelden!</h2>
-  <input placeholder="Name" type="input" formControlName="name" /><br />
-  <input placeholder="Geburtsdatum" type="date" formControlName="birthdate" /><br />
-  <select formControlName="courseId">
-    <option value="" disabled>Bitte auswählen</option>
-    @for (course of store.courses; track $index) {
-    <option [ngValue]="course.id">{{ course.name }}</option>
-    }
-  </select>
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <h2 class="h4 mb-3">Kurs-Anmeldung</h2>
+      <p class="text-muted small mb-4">
+        Bitte alle Pflichtfelder ausfüllen. Nach dem Speichern erscheint unten kurz eine Meldung.
+      </p>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+        <mat-form-field appearance="outline" class="w-100" subscriptSizing="dynamic">
+          <mat-label>Name der registrierten Person</mat-label>
+          <input matInput formControlName="name" autocomplete="name" />
+          @if (signupForm.controls.name.invalid && signupForm.controls.name.touched) {
+            @if (signupForm.controls.name.hasError('required')) {
+              <mat-error>Bitte geben Sie einen Namen ein.</mat-error>
+            } @else if (signupForm.controls.name.hasError('minlength')) {
+              <mat-error>Der Name muss mindestens 2 Zeichen haben.</mat-error>
+            } @else if (signupForm.controls.name.hasError('maxlength')) {
+              <mat-error>Der Name darf höchstens 100 Zeichen haben.</mat-error>
+            }
+          }
+        </mat-form-field>
 
-  <button type="submit">Erfassen</button>
-</form>
+        <mat-form-field appearance="outline" class="w-100" subscriptSizing="dynamic">
+          <mat-label>Geburtsdatum</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birthdate"
+            [min]="minBirthDate"
+            [max]="maxBirthDate"
+          />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          @if (signupForm.controls.birthdate.invalid && signupForm.controls.birthdate.touched) {
+            @if (signupForm.controls.birthdate.hasError('required')) {
+              <mat-error>Bitte wählen Sie ein Geburtsdatum.</mat-error>
+            } @else if (signupForm.controls.birthdate.hasError('matDatepickerMin')) {
+              <mat-error>Das Datum liegt vor dem erlaubten Bereich.</mat-error>
+            } @else if (signupForm.controls.birthdate.hasError('matDatepickerMax')) {
+              <mat-error>Das Geburtsdatum darf nicht in der Zukunft liegen.</mat-error>
+            }
+          }
+        </mat-form-field>
+
+        <div class="mb-3 d-flex flex-column flex-sm-row align-items-sm-center gap-2">
+          <mat-slide-toggle formControlName="newsletter" color="primary">
+            Newsletter zu neuen Kursangeboten
+          </mat-slide-toggle>
+        </div>
+
+        <mat-form-field appearance="outline" class="w-100" subscriptSizing="dynamic">
+          <mat-label>Kurs</mat-label>
+          <mat-select formControlName="courseId" placeholder="Kurs wählen">
+            <mat-option value="">Bitte auswählen</mat-option>
+            @for (course of store.courses; track course.id) {
+              <mat-option [value]="course.id">{{ course.name }}</mat-option>
+            }
+          </mat-select>
+          @if (signupForm.controls.courseId.invalid && signupForm.controls.courseId.touched) {
+            <mat-error>Bitte wählen Sie einen Kurs.</mat-error>
+          }
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          class="mt-2"
+          [disabled]="submitting() || signupForm.invalid"
+        >
+          @if (submitting()) {
+            Wird gesendet …
+          } @else {
+            Anmeldung erfassen
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

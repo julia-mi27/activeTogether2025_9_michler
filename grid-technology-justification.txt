@@ -1,0 +1,10 @@
+Technologie-Begründung (Grid)
+
+Wir verwenden das Bootstrap-Grid, weil es einfach und schnell für responsive Layouts ist.
+- Desktop: Der Inhalt liegt in `col-12 col-lg-10` und ist damit auf 10 Spalten begrenzt.
+- Mobil: Mit `col-12` wird die ganze Breite (12 Spalten) genutzt.
+
+Für die Ausrichtung nutzen wir `row`/`col-*` und `align-items-center`.
+Die fixe Zeilenhöhe im Desktop-Modus setzen wir per CSS (`min-height` ab `992px`).
+Damit ist der Inhalt in den Zeilen auch vertikal zentriert.
+

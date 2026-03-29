@@ -5,8 +5,14 @@
       "name": "Schnuppertauchen",
       "instructor": "Maximilian Tiefgang",
       "dates": [
-        { "begin": "2024-11-13T17:00:00", "end": "2024-11-13T19:00:00" },
-        { "begin": "2024-11-14T17:00:00", "end": "2024-11-14T19:00:00" }
+        {
+          "begin": "2024-11-13T17:00:00",
+          "end": "2024-11-13T19:00:00"
+        },
+        {
+          "begin": "2024-11-14T17:00:00",
+          "end": "2024-11-14T19:00:00"
+        }
       ],
       "eventLocationId": 1
     },
@@ -15,8 +21,14 @@
       "name": "Reiten",
       "instructor": "Cowboy Tim",
       "dates": [
-        { "begin": "2024-11-13T17:00:00", "end": "2024-11-13T19:00:00" },
-        { "begin": "2024-11-14T17:00:00", "end": "2024-11-14T19:00:00" }
+        {
+          "begin": "2024-11-13T17:00:00",
+          "end": "2024-11-13T19:00:00"
+        },
+        {
+          "begin": "2024-11-14T17:00:00",
+          "end": "2024-11-14T19:00:00"
+        }
       ],
       "eventLocationId": 2
     },
@@ -25,8 +37,14 @@
       "name": "Tennis",
       "instructor": "Cowboy Tim",
       "dates": [
-        { "begin": "2024-11-13T17:00:00", "end": "2024-11-13T19:00:00" },
-        { "begin": "2024-11-14T17:00:00", "end": "2024-11-14T19:00:00" }
+        {
+          "begin": "2024-11-13T17:00:00",
+          "end": "2024-11-13T19:00:00"
+        },
+        {
+          "begin": "2024-11-14T17:00:00",
+          "end": "2024-11-14T19:00:00"
+        }
       ],
       "eventLocationId": 2
     },
@@ -35,8 +53,14 @@
       "name": "Yoga",
       "instructor": "Manuela Ganzentspannt",
       "dates": [
-        { "begin": "2024-11-13T17:00:00", "end": "2024-11-13T19:00:00" },
-        { "begin": "2024-11-14T17:00:00", "end": "2024-11-14T19:00:00" }
+        {
+          "begin": "2024-11-13T17:00:00",
+          "end": "2024-11-13T19:00:00"
+        },
+        {
+          "begin": "2024-11-14T17:00:00",
+          "end": "2024-11-14T19:00:00"
+        }
       ],
       "eventLocationId": 3
     }
@@ -61,18 +85,5 @@
       "venueByPublicTansport": true
     }
   ],
-  "registrations": [
-    {
-      "id": 1,
-      "name": "Testuser",
-      "birthdate": "2024-11-13",
-      "courseId": "_iL775j"
-    },
-    {
-      "id": 2,
-      "name": "Julia",
-      "birthdate": "2024-11-13",
-      "courseId": "_iL775p"
-    }
-  ]
+  "registrations": []
 }

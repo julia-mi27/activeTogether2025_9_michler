@@ -1,2 +1,10 @@
+@if (backend.loading()) {
+  <div class="global-loading-overlay" role="status" aria-live="polite" aria-busy="true">
+    <mat-spinner diameter="56"></mat-spinner>
+    <span class="visually-hidden">Daten werden geladen …</span>
+  </div>
+}
 <app-header></app-header>
-<router-outlet></router-outlet>
+<main id="main-content" tabindex="-1">
+  <router-outlet></router-outlet>
+</main>

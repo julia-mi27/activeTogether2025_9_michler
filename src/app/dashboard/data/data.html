@@ -1,50 +1,162 @@
-<h1>Alle Kurse</h1>
-<table>
-  <tr>
-    <th>Kurs</th>
-    <th>Veranstaltungsort</th>
-    <th>Adresse des Veranstaltungsortes</th>
-    <th>Öffentlich erreichbar?</th>
-    <th>Kursleiter</th>
-    <th>Alle Termine</th>
-  </tr>
-  @for(course of store.courses; track $index) {
-  <tr>
-    <td>{{ course.name }}</td>
-    <td>{{ course.eventLocation.name }}</td>
-    <td>{{ course.eventLocation.address }}</td>
-    <td>{{ course.eventLocation.venueByPublicTansport == true ? 'Ja' : 'Nein' }}</td>
-    <td>{{ course.instructor }}</td>
-    <td>
-      <ul>
-        @for(date of course.dates; track $index) {
-        <li>
-          <span>{{ date.begin | date : "MMM dd, yyyy 'um' hh:mm a" }}</span> -
-          <span>{{ date.end | date : "MMM dd, yyyy 'um' hh:mm a" }}</span>
-        </li>
+<div class="container py-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <h1 class="h3 mb-3">Alle Kurse</h1>
+      @if (store.courses.length === 0) {
+        <p class="text-muted">Zurzeit sind keine Kurse geladen.</p>
+      } @else {
+        <div class="row d-none d-lg-flex fw-semibold pb-2 mb-0 border-bottom grid-row-desktop align-items-center">
+          <div class="col-lg-2">Kurs</div>
+          <div class="col-lg-2">Veranstaltungsort</div>
+          <div class="col-lg-2">Adresse</div>
+          <div class="col-lg-2">Öffentlich erreichbar?</div>
+          <div class="col-lg-2">Kursleiter</div>
+          <div class="col-lg-2">Termine</div>
+        </div>
+        @for (course of store.courses; track course.id) {
+          <div
+            class="row d-none d-lg-flex border-bottom py-2 grid-row-desktop align-items-center gx-2"
+          >
+            <div class="col-lg-2">{{ course.name }}</div>
+            <div class="col-lg-2">{{ course.eventLocation.name }}</div>
+            <div class="col-lg-2 small">{{ course.eventLocation.address }}</div>
+            <div class="col-lg-2">
+              {{ course.eventLocation.venueByPublicTansport ? 'Ja' : 'Nein' }}
+            </div>
+            <div class="col-lg-2">{{ course.instructor }}</div>
+            <div class="col-lg-2 small">
+              <ul class="list-unstyled mb-0">
+                @for (date of course.dates; track $index) {
+                  <li>
+                    <span>{{ date.begin | date : "dd.MM.yyyy, HH:mm" }}</span>
+                    –
+                    <span>{{ date.end | date : "dd.MM.yyyy, HH:mm" }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+          <div class="d-lg-none card mb-3 shadow-sm">
+            <div class="card-body">
+              <h2 class="h6 card-title">{{ course.name }}</h2>
+              <p class="small mb-1">
+                <strong>Ort:</strong> {{ course.eventLocation.name }}<br />
+                <strong>Adresse:</strong> {{ course.eventLocation.address }}<br />
+                <strong>Öffentlich erreichbar:</strong>
+                {{ course.eventLocation.venueByPublicTansport ? 'Ja' : 'Nein' }}<br />
+                <strong>Kursleiter:</strong> {{ course.instructor }}
+              </p>
+              <p class="small mb-0"><strong>Termine</strong></p>
+              <ul class="small mb-0">
+                @for (date of course.dates; track $index) {
+                  <li>
+                    {{ date.begin | date : "dd.MM.yyyy, HH:mm" }} –
+                    {{ date.end | date : "dd.MM.yyyy, HH:mm" }}
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
         }
-      </ul>
-    </td>
-  </tr>
-  }
-</table>
+      }
+    </div>
+  </div>
+</div>
 
-<h1>Alle Anmeldungen</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Geburtsdatum</th>
-      <th>Kurs</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(registration of store.registrations; track $index) {
-    <tr>
-      <td>{{ registration.name }}</td>
-      <td>{{ registration.birthdate }}</td>
-      <td>{{ registration.course?.name }}</td>
-    </tr>
-    }
-  </tbody>
-</table>
+<div class="container py-3 border-top">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <h2 class="h3 mb-3">Alle Anmeldungen</h2>
+
+      <mat-form-field appearance="outline" class="search-field w-100 mb-2" subscriptSizing="dynamic">
+        <mat-label>Anmeldungen durchsuchen</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input
+          matInput
+          type="search"
+          [ngModel]="searchTerm()"
+          (ngModelChange)="onSearchInput($event)"
+          autocomplete="off"
+          aria-describedby="search-result-count"
+        />
+      </mat-form-field>
+
+      <p id="search-result-count" class="small text-muted mb-3" aria-live="polite">
+        @if (store.registrations.length === 0) {
+          Keine Anmeldungen vorhanden.
+        } @else {
+          {{ resultCount() }} von {{ store.registrations.length }} Einträgen angezeigt
+        }
+      </p>
+
+      @if (store.registrations.length === 0) {
+        <div class="alert alert-secondary mb-0" role="status">
+          Noch keine Anmeldungen erfasst. Nutzen Sie das Formular oben.
+        </div>
+      } @else {
+      <div class="row d-none d-lg-flex fw-semibold pb-2 mb-0 border-bottom grid-row-desktop align-items-center">
+        <div class="col-lg-3">Name</div>
+        <div class="col-lg-3">Geburtsdatum</div>
+        <div class="col-lg-4">Kurs</div>
+        <div class="col-lg-2 text-lg-end">Aktion</div>
+      </div>
+
+      @if (filteredRegistrations().length === 0) {
+        <div class="alert alert-info my-3" role="status">
+          Keine Anmeldungen passen zu Ihrer Suche. Passen Sie den Suchbegriff an.
+        </div>
+      }
+
+      @for (registration of filteredRegistrations(); track registration.id) {
+        <div
+          class="row d-none d-lg-flex border-bottom py-2 grid-row-desktop align-items-center gx-2 position-relative registration-row"
+        >
+          @if (deletingId() === registration.id) {
+            <div class="row-delete-overlay" aria-hidden="true">
+              <mat-spinner diameter="40"></mat-spinner>
+            </div>
+          }
+          <div class="col-lg-3">{{ registration.name }}</div>
+          <div class="col-lg-3">{{ registration.birthdate }}</div>
+          <div class="col-lg-4">{{ registration.course?.name }}</div>
+          <div class="col-lg-2 text-lg-end">
+            <button
+              mat-stroked-button
+              color="warn"
+              type="button"
+              (click)="deleteRegistration(registration.id)"
+              [disabled]="deletingId() === registration.id"
+              aria-label="Anmeldung von {{ registration.name }} löschen"
+            >
+              Abmelden
+            </button>
+          </div>
+        </div>
+        <div class="d-lg-none card mb-3 shadow-sm position-relative registration-row">
+          @if (deletingId() === registration.id) {
+            <div class="row-delete-overlay" aria-hidden="true">
+              <mat-spinner diameter="40"></mat-spinner>
+            </div>
+          }
+          <div class="card-body">
+            <p class="mb-1"><strong>Name:</strong> {{ registration.name }}</p>
+            <p class="mb-1"><strong>Geburtsdatum:</strong> {{ registration.birthdate }}</p>
+            <p class="mb-3"><strong>Kurs:</strong> {{ registration.course?.name }}</p>
+            <button
+              mat-stroked-button
+              color="warn"
+              type="button"
+              class="w-100"
+              (click)="deleteRegistration(registration.id)"
+              [disabled]="deletingId() === registration.id"
+              aria-label="Anmeldung von {{ registration.name }} löschen"
+            >
+              Abmelden
+            </button>
+          </div>
+        </div>
+      }
+      }
+    </div>
+  </div>
+</div>

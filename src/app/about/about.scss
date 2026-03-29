@@ -1,0 +1,54 @@
+.about-page {
+  min-height: 60vh;
+}
+
+.about-card {
+  padding: 1.75rem 1.5rem;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.about-logo {
+  display: block;
+  margin: 0 auto 1.25rem;
+  border-radius: 16px;
+}
+
+.about-title {
+  font-family: Outfit, system-ui, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.about-lead {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 1.05rem;
+}
+
+.about-list {
+  padding-left: 1.25rem;
+  color: var(--mat-sys-on-surface);
+}
+
+.about-list li {
+  margin-bottom: 0.35rem;
+}
+
+.about-tech {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.95rem;
+}
+
+.about-card .btn-primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  font-weight: 600;
+}
+
+.about-card .btn-primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
